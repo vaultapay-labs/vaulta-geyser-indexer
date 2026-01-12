@@ -1,0 +1,107 @@
+[package]
+name = "vaulta-geyser-indexer"
+version = "0.1.0"
+edition = "2021"
+description = "High-performance Geyser plugin for real-time vault state indexing with PostgreSQL and Redis backend"
+authors = ["Vaulta Protocol"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/vaultapay-labs/vaulta-geyser-indexer"
+homepage = "https://vaultapay.app"
+documentation = "https://vaultapay.gitbook.io/documentation/"
+
+[lib]
+name = "vaulta_geyser_indexer"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Solana Geyser Plugin Interface
+solana-geyser-plugin-interface = "1.18"
+solana-sdk = "1.18"
+solana-program = "1.18"
+solana-account-decoder = "1.18"
+
+# Async runtime
+tokio = { version = "1.35", features = ["full", "rt-multi-thread"] }
+async-trait = "0.1"
+
+# PostgreSQL
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "chrono", "uuid", "json"] }
+postgres = "0.19"
+
+# Redis
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+bincode = "1.3"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Configuration
+config = "0.14"
+toml = "0.8"
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+time = "0.3"
+
+# UUID
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+# Crypto utilities
+bs58 = "0.5"
+sha2 = "0.10"
+blake3 = "1.5"
+
+# Parallel processing
+rayon = "1.8"
+crossbeam = "0.8"
+
+# Channel for async communication
+tokio-stream = "0.1"
+
+# Metrics
+metrics = "0.22"
+metrics-prometheus = "0.6"
+
+# Retry logic
+backoff = "0.4"
+
+# Rate limiting
+governor = "0.6"
+
+# Memory-efficient collections
+smallvec = "1.11"
+
+# Base58 encoding
+base58 = "0.2"
+
+[build-dependencies]
+cc = "1.0"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+proptest = "1.4"
+tokio-test = "0.4"
+testcontainers = "0.15"
+
+[[bench]]
+name = "indexing_bench"
+harness = false
+
+[[bench]]
+name = "cache_bench"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

@@ -1,0 +1,28 @@
+# Vaulta Geyser Indexer Configuration Example
+# Copy this file to config.toml and modify as needed
+
+# Vault program ID to index
+vault_program_id = "Vault1111111111111111111111111111111111111111"
+
+# PostgreSQL configuration
+[database]
+host = "localhost"
+port = 5432
+database = "vaulta_indexer"
+username = "postgres"
+password = "postgres"
+max_connections = 10
+connection_timeout_seconds = 30
+
+# Redis configuration
+[redis]
+url = "redis://localhost:6379"
+ttl_seconds = 300
+max_connections = 10
+connection_timeout_seconds = 5
+
+# Indexer settings
+batch_size = 1000
+flush_interval_ms = 100
+enable_cache = true
+log_level = "info"
