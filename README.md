@@ -401,12 +401,6 @@ at your option.
 - **Issues**: [GitHub Issues](https://github.com/vaultapay-labs/vaulta-geyser-indexer/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/vaultapay-labs/vaulta-geyser-indexer/discussions)
 
-## 🔗 Related Projects
-
-- [vaulta-anchor-core](https://github.com/vaultapay-labs/vaulta-anchor-core) - Core smart vault programs
-- [vaulta-zk-solvency](https://github.com/vaultapay-labs/vaulta-zk-solvency) - Zero-knowledge solvency proofs
-- [vaulta-simulator](https://github.com/vaultapay-labs/vaulta-simulator) - Capital routing simulator
-
 ---
 
 <div align="center">
